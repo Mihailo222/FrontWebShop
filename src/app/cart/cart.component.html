@@ -1,0 +1,12 @@
+<h1 *ngIf="isEmpty; else products" class="text-center">Korpa je prazna!</h1>
+<ng-template #products>
+<app-product
+*ngFor="let cartItem of cartList"
+class="product"
+[product]="cartItem"
+(productCreated)="addNewItem($event)"
+(productReduced)="reduceNumberOfItems($event)"
+>
+</app-product>
+</ng-template>
+<!-- znaci, ovo se prikazuje samo ako je korpa prazna, a ako nije, onda se prikazuju proizvodi-->

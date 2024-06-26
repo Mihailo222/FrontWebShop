@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Product } from './home/product';
+import { Injectable } from '@angular/core';
+import { Product } from '../home/product';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+@Injectable({
+  providedIn: 'root' //ovo je provider servisa
 })
-export class AppComponent {
-  title = 'prodavnica2';
+export class ProductService {
+
+  constructor() { }
+
   products: Product[] = [
     {
       title: 'Samsung Galaxy S22 Ultra',
@@ -15,8 +15,7 @@ export class AppComponent {
       description:'Glavni model S22 serija u koji je ukljucena olovka.',
       image: '../../assets/images/samsung.jpg',
       supplies: 21,
-      inCart: 0
-
+      inCart: 0,
 
     },
     {
@@ -26,8 +25,6 @@ export class AppComponent {
       image: '../../assets/images/iphone.jpg',
       supplies: 23,
       inCart: 0
-
-
     },
     {
       title: 'Xiaomi Redmi 10 Power',
@@ -46,24 +43,7 @@ export class AppComponent {
       supplies: 23,
       inCart: 0
 
-
     }
   ]
-
-
-
-  @Output() productCreated = new EventEmitter<number>();
-  @Output() productReduced = new EventEmitter<number>();
-  itemNumber: number = 0
-
-  onAddToCart() {
-    this.productCreated.emit();
-    this.itemNumber++;
-  }
-
-  onRemoveFromCart() {
-    this.productReduced.emit();
-    if(this.itemNumber > 0) this.itemNumber--;
-  }
 
 }

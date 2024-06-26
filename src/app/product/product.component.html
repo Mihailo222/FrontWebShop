@@ -1,0 +1,25 @@
+    <div class="card-container">
+      <div class="card" [ngStyle]="{ border: '1px solid red' }">
+        <img [src]="product.image" alt="Telefon" class="image" />
+        <h1>{{ product.title }}</h1>
+        <p class="price" appRedEl>{{ product.price }}</p>
+        <p class="description">{{ product.description }}</p>
+        <p>
+          <span *ngIf="!isCartPage">Na stanju: {{ product.supplies }}</span>
+          <span *ngIf="isCartPage">U korpi: {{ product.inCart }}</span>
+          <button (click)="onAddToCart()" #addButton>Dodaj u korpu</button>
+          <button (click)="onRemoveFromCart()" *ngIf="isCartPage">Izbrisi iz korpe</button>
+        </p>
+      </div>
+    </div>
+
+<!--izmene treba napravit i u product.component.html, gde ce se izmene videti samo ako je ispunjen uslov ngIf-->
+
+
+
+
+
+
+
+
+

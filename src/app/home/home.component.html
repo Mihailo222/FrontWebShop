@@ -1,0 +1,31 @@
+<div>
+<h1 class="display-2 text-center">{{ heading }}</h1>
+
+</div>
+
+<div class="text-center">
+<p>Pretraga telefona:</p>
+<input type="text" [(ngModel)]="search"/>
+<p>Pretrazuje se: {{search}}</p>
+</div>
+
+
+
+<div class="products">
+    <app-product 
+    *ngFor="let p of products"
+    [product]="p"
+    class="product"
+    (productCreated)="addNewItem(p)" 
+    (productReduced)="removeItem(p)"
+    ></app-product>
+</div>
+
+    <!--ovde smo prosledili product iz product komponente home komponenti
+    i vidis da se i zove identicno-->
+
+    <!-- ovde sam isto ukljucio da mi se na klik desi da hocu da
+     se izvrsi metoda onAddToCart() i onRemoveFromCart()-->
+
+     <!--ako se klikne na kreiraj tj. ako se desi productCreated, 
+     onda mi treba da kreiramo novi pr. u nizu cart-->
